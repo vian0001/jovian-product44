@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+
+<style>
+.image-container {
+  margin: 30px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  max-width: 100%;
+  position: relative;
+}
+
+.image-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: all 0.4s ease;
+}
+
+.image-container:hover img {
+  filter: brightness(1.1);
+}
+
+.image-caption {
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7), transparent);
+  padding: 15px 20px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .image-caption {
+  transform: translateY(0);
+}
+
+@keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+
+    /* Portfolio Button Styling */
+
+.portfolio-button {
+position: fixed;
+bottom: 30px;
+right: 30px;
+z-index: 1000;
+background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+color: var(--text-primary);
+border: none;
+border-radius: 50px;
+padding: 15px 25px;
+font-family: 'Inter', sans-serif;
+font-weight: 600;
+font-size: 1rem;
+cursor: pointer;
+box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+gap: 10px;
+overflow: hidden;
+text-decoration: none;
+}
+.portfolio-button:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+}
+.portfolio-button::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg,
+transparent,
+rgba(255, 255, 255, 0.2),
+transparent);
+animation: shineEffect 3s infinite;
+}
+.portfolio-icon {
+font-size: 1.2rem;
+animation: pulse 2s infinite;
+}
+@keyframes shineEffect {
+0% { left: -100%; }
+20% { left: 100%; }
+100% { left: 100%; }
+}
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.2); }
+100% { transform: scale(1); }
+}
+.attention-ripple {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
+border-radius: 50px;
+border: 2px solid var(--accent-color);
+animation: ripple 2s infinite;
+opacity: 0;
+}
+@keyframes ripple {
+0% {
+width: 100%;
+height: 100%;
+opacity: 0.8;
+}
+100% {
+width: 200%;
+height: 200%;
+opacity: 0;
+}
+}
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #06b6d4;
+    --success-color: #059669;
+    --warning-color: #d97706;
+    --danger-color: #dc2626;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    --bg-light: #f8fafc;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #475569;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Tech Background Pattern */
+.tech-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(220, 38, 38, 0.08) 0%, transparent 50%);
+}
+
+.circuit-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.03;
+    background-image: 
+        linear-gradient(90deg, var(--primary-color) 1px, transparent 1px),
+        linear-gradient(var(--primary-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: circuitMove 20s linear infinite;
+}
+
+@keyframes circuitMove {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+/* Floating particles */
+.tech-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    0% { 
+        transform: translateY(100vh) translateX(0px);
+        opacity: 0;
+    }
+    10% { 
+        opacity: 0.6;
+    }
+    90% { 
+        opacity: 0.6;
+    }
+    100% { 
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 100px 20px 80px;
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.1) 0%, 
+        rgba(6, 182, 212, 0.1) 50%, 
+        rgba(5, 150, 105, 0.1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(37, 99, 235, 0.1),
+        transparent
+    );
+    animation: headerScan 10s linear infinite;
+}
+
+@keyframes headerScan {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.main-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--success-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    text-shadow: 0 0 50px rgba(37, 99, 235, 0.3);
+    animation: titleGlow 4s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes titleGlow {
+    0% { filter: brightness(1); }
+    100% { filter: brightness(1.2); }
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.author-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: cardFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+.card-header {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.author-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 80px;
+    margin-right: 15px;
+}
+
+.info-value {
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Section styling */
+.section {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    position: relative;
+    backdrop-filter: blur(20px);
+    transition: all 0.4s ease;
+    animation: sectionSlide 0.8s ease-out;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.section:nth-child(even) {
+    animation: sectionSlideRight 0.8s ease-out;
+}
+
+@keyframes sectionSlide {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes sectionSlideRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.section:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 12px 48px rgba(37, 99, 235, 0.2);
+    transform: translateY(-8px);
+}
+
+.section-title {
+    font-family: 'Inter', sans-serif;
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+/* Sub-section titles */
+.subsection-title {
+    font-family: 'Inter', sans-serif;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.subsection-title::before {
+    content: '—'; /* Simple dash or similar indicator */
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Code blocks with typing effect */
+.code-terminal {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+    font-family: 'JetBrains Mono', monospace;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.code-terminal::before {
+    content: '$ mikrotik@router:~';
+    color: var(--success-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-line {
+    color: var(--text-primary);
+    margin: 8px 0;
+    position: relative;
+    padding-left: 20px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    width: fit-content;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: pre;
+}
+
+.code-line.typing {
+    opacity: 1;
+    border-right: 2px solid var(--accent-color);
+    animation: blink-cursor 1s infinite;
+}
+
+.code-line.typed {
+    opacity: 1;
+    border-right: none;
+}
+
+@keyframes blink-cursor {
+    0%, 50% { border-color: var(--accent-color); }
+    51%, 100% { border-color: transparent; }
+}
+
+.code-line:hover {
+    background: rgba(37, 99, 235, 0.1);
+    padding-left: 25px;
+    border-radius: 6px;
+}
+
+.code-line::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+}
+
+.comment {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.string {
+    color: var(--warning-color);
+    font-weight: 400;
+}
+
+.keyword {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Alert boxes */
+.tech-alert {
+    background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.1), 
+        rgba(6, 182, 212, 0.1));
+    border: 1px solid var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    position: relative;
+    animation: alertPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes alertPulse {
+    0% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.2); }
+    100% { box-shadow: 0 0 30px rgba(37, 99, 235, 0.4); }
+}
+
+.tech-alert::before {
+    content: '🔧 TEKNOLOGI INFO';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg-primary);
+    color: var(--primary-color);
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+}
+
+.security-alert {
+    background: linear-gradient(135deg, 
+        rgba(220, 38, 38, 0.1), 
+        rgba(217, 119, 6, 0.1));
+    border: 1px solid var(--danger-color);
+    border-left: 4px solid var(--danger-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    position: relative;
+    animation: securityBlink 2s ease-in-out infinite alternate;
+}
+
+@keyframes securityBlink {
+    0% { border-left-color: var(--danger-color); }
+    100% { border-left-color: var(--warning-color); }
+}
+
+.security-alert::before {
+    content: '🛡 KEAMANAN';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg-primary);
+    color: var(--danger-color);
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--danger-color);
+}
+
+.conclusion-box {
+    background: linear-gradient(135deg, 
+        rgba(5, 150, 105, 0.1), 
+        rgba(37, 99, 235, 0.1));
+    border: 1px solid var(--success-color);
+    border-left: 4px solid var(--success-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    position: relative;
+    animation: conclusionGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes conclusionGlow {
+    0% { box-shadow: 0 0 20px rgba(5, 150, 105, 0.2); }
+    100% { box-shadow: 0 0 30px rgba(5, 150, 105, 0.4); }
+}
+
+.conclusion-box::before {
+    content: '📝 KESIMPULAN';
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--bg-primary);
+    color: var(--success-color);
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--success-color);
+}
+
+/* Bibliography */
+.bibliography {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.08), 
+        rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 60px;
+    backdrop-filter: blur(20px);
+    animation: biblioFade 1.5s ease-out;
+}
+
+@keyframes biblioFade {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bibliography h3 {
+    color: var(--accent-color);
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.bibliography ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.bibliography li {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 50px;
+}
+
+.bibliography li::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 1.2rem;
+}
+
+.bibliography li:hover {
+    color: var(--text-primary);
+    transform: translateX(10px);
+    border-color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(6, 182, 212, 0.05));
+}
+
+.bibliography a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    word-break: break-all;
+}
+
+.bibliography a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--success-color));
+    z-index: 1000;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .section {
+        padding: 25px 20px;
+        margin: 30px 0;
+    }
+    
+    .container {
+        padding: 40px 15px;
+    }
+
+    .code-terminal {
+        padding: 20px;
+        font-size: 0.9rem;
+    }
+
+    .author-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Smooth animations */
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+img, a {
+-webkit-user-drag: none;
+-khtml-user-drag: none;
+-moz-user-drag: none;
+-o-user-drag: none;
+user-drag: none;
+}
+
+</style><!-- Portfolio Button -->
+<a href="https://jovian-portofolio02.vercel.app/" target="_blank" class="portfolio-button">
+    <span class="portfolio-icon">🚀</span>
+    Lihat Portfolio Saya
+    <div class="attention-ripple"></div>
+</a>
+
+<!-- Tech Background -->
+<div class="tech-bg"></div>
+<div class="circuit-pattern"></div>
+<div class="tech-particles" id="techParticles"></div>
+
+<!-- Header -->
+<div class="header">
+    <h1 class="main-title">MIKROTIK ROUTEROS</h1>
+    <div class="subtitle">Mengoptimalkan Trafik Menggunakan Queue Tree</div>
+    <div class="subtitle">Konfigurasi lanjutan untuk prioritisasi dan manajemen trafik jaringan</div>
+    
+    <div class="author-card">
+        <div class="card-header">Informasi Penulis</div>
+        <div class="author-info">
+            <div class="info-item">
+                <span class="info-label">Penulis:</span>
+                <span class="info-value">Jovian Ekasakta</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Guru:</span>
+                <span class="info-value">Arief Wahyudin</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Kelas:</span>
+                <span class="info-value">XI TJKT 03</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Sekolah:</span>
+                <span class="info-value">Dwija Bhakti 01 Jombang</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Section: Konsep Dasar Queue Tree -->
+    <div class="section fade-in">
+        <h2 class="section-title">1. KONSEP DASAR QUEUE TREE</h2>
+        
+        <h3 class="subsection-title">Pengertian Queue Tree</h3>
+        <p>Dari sumber MikroTik Documentation (2023), Queue Tree adalah metode manajemen bandwidth lanjutan di RouterOS yang memungkinkan pengguna membuat struktur queue bertingkat (hierarkis) untuk mengelola trafik jaringan. Queue Tree berfungsi sebagai sarana untuk membatasi, memprioritaskan, dan mengoptimalkan trafik berdasarkan penanda paket (packet marks) yang sebelumnya telah ditandai melalui fasilitas firewall mangle.</p>
+        
+        <p>Dari sumber mikrotikusers.com (2024), Queue Tree merupakan solusi terbaik untuk implementasi QoS (Quality of Service) yang lebih canggih, seperti kebijakan prioritisasi global dan pembatasan grup pengguna. Berbeda dengan Simple Queue, Queue Tree hanya bersifat satu arah (one-directional) dan memerlukan paket yang sudah ditandai melalui mangle untuk dapat bekerja dengan efektif.</p>
+        
+        <div class="tech-alert">
+            <p>Queue Tree bekerja berdasarkan metode Hierarchical Token Bucket (HTB) yang memungkinkan pembuatan struktur antrian hierarkis dan menentukan hubungan antar antrian. Sistem ini dapat diterapkan pada dua tempat berbeda dalam diagram aliran paket (Packet Flow), yaitu pada chain input dan postrouting.</p>
+        </div>
+        
+        <h3 class="subsection-title">Perbedaan Queue Tree dengan Simple Queue</h3>
+        <p>Dari sumber MikroTik Wiki (2024), Queue Tree memiliki perbedaan signifikan dengan Simple Queue dalam beberapa aspek berikut:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">1. Arah Trafik:</span></div>
+            <div class="code-line comment"># Simple Queue: Dua arah (bidirectional) - upload dan download dalam satu konfigurasi</div>
+            <div class="code-line comment"># Queue Tree: Satu arah (one-directional) - perlu konfigurasi terpisah untuk upload dan download</div>
+            <div class="code-line"><span class="keyword">2. Urutan Pemrosesan:</span></div>
+            <div class="code-line comment"># Simple Queue: Berurutan dari atas ke bawah (ordered)</div>
+            <div class="code-line comment"># Queue Tree: Semua trafik diproses bersamaan (not ordered)</div>
+            <div class="code-line"><span class="keyword">3. Persyaratan:</span></div>
+            <div class="code-line comment"># Simple Queue: Dapat langsung menggunakan alamat IP atau subnet sebagai target</div>
+            <div class="code-line comment"># Queue Tree: Memerlukan packet-mark dari firewall mangle</div>
+            <div class="code-line"><span class="keyword">4. Fleksibilitas:</span></div>
+            <div class="code-line comment"># Simple Queue: Cocok untuk pembatasan dasar per klien/perangkat</div>
+            <div class="code-line comment"># Queue Tree: Lebih fleksibel untuk pemrioritasan berdasarkan jenis layanan/aplikasi</div>
+        </div>
+        
+        <h3 class="subsection-title">Kelebihan Queue Tree</h3>
+        <p>Dari sumber MiRO (2020), Queue Tree menawarkan beberapa kelebihan utama yang menjadikannya pilihan ideal untuk manajemen bandwidth lanjutan:</p>
+        
+        <ul>
+            <li><strong>Prioritisasi trafik:</strong> Memungkinkan pemberian prioritas berbeda untuk jenis trafik tertentu (misalnya VoIP &gt; browsing &gt; download).</li>
+            <li><strong>Double QoS:</strong> Memungkinkan untuk menandai dan membentuk trafik dua kali dalam router yang sama.</li>
+            <li><strong>Struktur hierarkis:</strong> Mendukung struktur parent-child untuk manajemen bandwidth yang lebih terorganisir.</li>
+            <li><strong>Pembagian bandwidth yang lebih granular:</strong> Dapat membagi bandwidth berdasarkan jenis layanan atau aplikasi.</li>
+            <li><strong>Integrasi dengan PCQ (Per Connection Queue):</strong> Memungkinkan distribusi bandwidth yang adil di antara banyak pengguna secara otomatis.</li>
+        </ul>
+        
+        <div class="conclusion-box">
+            <strong>Kesimpulan:</strong> Dari 2 pendapat tersebut dapat disimpulkan bahwa Queue Tree adalah metode manajemen bandwidth lanjutan di MikroTik yang berbasis HTB (Hierarchical Token Bucket), memungkinkan pembuatan struktur antrian hierarkis untuk kontrol trafik yang lebih terperinci. Berbeda dengan Simple Queue, Queue Tree bersifat satu arah, tidak berurutan dalam pemrosesan, dan memerlukan packet marking, namun menawarkan fleksibilitas dan kemampuan prioritisasi yang lebih baik untuk implementasi QoS yang kompleks.
+        </div>
+    </div>
+
+    <!-- Section: Implementasi Mangle untuk Queue Tree -->
+    <div class="section fade-in">
+        <h2 class="section-title">2. IMPLEMENTASI MANGLE UNTUK QUEUE TREE</h2>
+        
+        <h3 class="subsection-title">Peran Mangle dalam Queue Tree</h3>
+        <p>Dari sumber help.mikrotik.com (2024), Mangle merupakan fasilitas yang memungkinkan penandaan paket IP dengan tanda khusus (mark) yang kemudian digunakan oleh Queue Tree untuk mengidentifikasi jenis trafik. Sebelum dapat menggunakan Queue Tree, perlu dilakukan konfigurasi firewall mangle untuk menandai paket-paket yang akan dikelola.</p>
+        
+        <p>Dari sumber miro.co.za (2020), fasilitas mangle tidak hanya digunakan untuk menandai paket, tetapi juga dapat memodifikasi beberapa bidang dalam header IP seperti TOS (DSCP) dan TTL. Penandaan ini sangat penting dalam implementasi QoS karena menjadi dasar bagi Queue Tree untuk mengenali dan memprioritaskan trafik tertentu.</p>
+        
+        <div class="tech-alert">
+            <p>Trafik perlu ditandai sebelum memasuki Simple Queue (sebelum global-in HTB queue). Hal ini berarti konfigurasi mangle harus dilakukan dengan mempertimbangkan urutan aliran paket dalam router.</p>
+        </div>
+        
+        <h3 class="subsection-title">Konfigurasi Mangle untuk Prioritas Trafik</h3>
+        <p>Berikut adalah langkah-langkah konfigurasi mangle untuk menandai berbagai jenis trafik berdasarkan prioritasnya menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menandai Trafik ICMP (ping) - prioritas tertinggi:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Mangle"</div>
+            <div class="code-line">4. Klik tombol "+" (add) untuk menambahkan aturan mangle baru</div>
+            <div class="code-line">5. Pada tab "General", atur:</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Protocol: icmp</div>
+            <div class="code-line">6. Pada tab "Action", atur:</div>
+            <div class="code-line">   - Action: mark-connection</div>
+            <div class="code-line">   - New Connection Mark: ICMP_conn</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">7. Pada tab "Advanced", masukkan "ICMP Connection" di kolom Comment</div>
+            <div class="code-line">8. Klik "OK" untuk menyimpan aturan</div>
+            <div class="code-line"></div>
+            <div class="code-line">9. Klik tombol "+" lagi untuk membuat aturan kedua</div>
+            <div class="code-line">10. Pada tab "General", atur:</div>
+            <div class="code-line">    - Chain: forward</div>
+            <div class="code-line">    - Connection Mark: ICMP_conn</div>
+            <div class="code-line">11. Pada tab "Action", atur:</div>
+            <div class="code-line">    - Action: mark-packet</div>
+            <div class="code-line">    - New Packet Mark: ICMP_packet</div>
+            <div class="code-line">    - Jangan centang Passthrough</div>
+            <div class="code-line">12. Pada tab "Advanced", masukkan "ICMP Packet" di kolom Comment</div>
+            <div class="code-line">13. Klik "OK" untuk menyimpan aturan</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menandai Trafik HTTPS - prioritas kedua:</span></div>
+            <div class="code-line">1. Klik tombol "+" untuk menambahkan aturan mangle baru</div>
+            <div class="code-line">2. Pada tab "General", atur:</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Protocol: tcp</div>
+            <div class="code-line">3. Pada tab "Advanced", atur:</div>
+            <div class="code-line">   - Dst. Port: 443</div>
+            <div class="code-line">4. Pada tab "Action", atur:</div>
+            <div class="code-line">   - Action: mark-connection</div>
+            <div class="code-line">   - New Connection Mark: HTTPS_conn</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">5. Tambahkan comment "HTTPS Connection"</div>
+            <div class="code-line">6. Klik "OK" untuk menyimpan aturan</div>
+            <div class="code-line"></div>
+            <div class="code-line">7. Buat aturan kedua untuk packet-mark HTTPS</div>
+            <div class="code-line">8. Atur connection-mark: HTTPS_conn</div>
+            <div class="code-line">9. Action: mark-packet, New Packet Mark: HTTPS_packet</div>
+            <div class="code-line">10. Jangan centang Passthrough</div>
+            <div class="code-line">11. Tambahkan comment "HTTPS Packet"</div>
+            <div class="code-line">12. Klik "OK" untuk menyimpan</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menandai Trafik HTTP - prioritas ketiga:</span></div>
+            <div class="code-line">1. Ulangi langkah yang sama seperti untuk HTTPS</div>
+            <div class="code-line">2. Untuk connection mark, gunakan: HTTP_conn</div>
+            <div class="code-line">3. Untuk packet mark, gunakan: HTTP_packet</div>
+            <div class="code-line">4. Dst. Port: 80 (bukan 443)</div>
+            <div class="code-line">5. Tambahkan comment yang sesuai</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">Menandai Trafik Lainnya - prioritas terendah:</span></div>
+            <div class="code-line">1. Tambahkan aturan mark-connection baru</div>
+            <div class="code-line">2. Chain: forward, tanpa protokol spesifik</div>
+            <div class="code-line">3. New Connection Mark: Other_conn</div>
+            <div class="code-line">4. Centang Passthrough</div>
+            <div class="code-line">5. Tambahkan comment "Other Connection"</div>
+            <div class="code-line">6. Tambahkan aturan kedua untuk mark packet</div>
+            <div class="code-line">7. Connection Mark: Other_conn</div>
+            <div class="code-line">8. New Packet Mark: Other_packet</div>
+            <div class="code-line">9. Jangan centang Passthrough</div>
+            <div class="code-line">10. Tambahkan comment "Other Packet"</div>
+        </div>
+        
+        <h3 class="subsection-title">Memisahkan Trafik Upload dan Download</h3>
+        <p>Dari sumber help.ispbills.com (2020), untuk mengimplementasikan Queue Tree dengan pemisahan trafik upload dan download, gunakan Winbox untuk konfigurasi mangle berdasarkan interface:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menandai Paket Download dan Upload:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Mangle"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan aturan untuk download:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: prerouting</div>
+            <div class="code-line">   - In. Interface: ether1-WAN (pilih interface WAN Anda)</div>
+            <div class="code-line">   - Action: mark-packet</div>
+            <div class="code-line">   - New Packet Mark: download</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">   - Comment: "Download Traffic"</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">5. Tambahkan aturan untuk upload:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: prerouting</div>
+            <div class="code-line">   - In. Interface: ether2-LAN (pilih interface LAN Anda)</div>
+            <div class="code-line">   - Action: mark-packet</div>
+            <div class="code-line">   - New Packet Mark: upload</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">   - Comment: "Upload Traffic"</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <p>Dari sumber aacable.wordpress.com (2020), jika kita ingin memprioritaskan trafik CDN (Content Delivery Network) seperti streaming video, dapat dilakukan penandaan khusus dengan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menandai Trafik CDN:</span></div>
+            <div class="code-line">1. Tambahkan daftar alamat IP untuk CDN:</div>
+            <div class="code-line">   - Klik menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Address Lists"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan daftar baru</div>
+            <div class="code-line">   - Address: 58.27.130.0/24</div>
+            <div class="code-line">   - List: cdn_list</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Tambahkan aturan mangle untuk trafik dari CDN:</div>
+            <div class="code-line">   - Kembali ke tab "Mangle"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Src. Address List: cdn_list</div>
+            <div class="code-line">   - Action: mark-connection</div>
+            <div class="code-line">   - New Connection Mark: CDN_conn</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">3. Tambahkan aturan mangle untuk trafik ke CDN:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Dst. Address List: cdn_list</div>
+            <div class="code-line">   - Action: mark-connection</div>
+            <div class="code-line">   - New Connection Mark: CDN_conn</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan aturan untuk menandai packet CDN:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Connection Mark: CDN_conn</div>
+            <div class="code-line">   - Action: mark-packet</div>
+            <div class="code-line">   - New Packet Mark: CDN_packet</div>
+            <div class="code-line">   - Jangan centang Passthrough</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <div class="security-alert">
+            <p>Pastikan untuk memahami alur paket dalam router MikroTik ketika menggunakan mangle. Kesalahan dalam penempatan aturan mangle dapat menyebabkan packet mark tidak bekerja dengan benar atau bahkan tidak diproses sama sekali oleh Queue Tree.</p>
+        </div>
+        
+        <div class="conclusion-box">
+            <strong>Kesimpulan:</strong> Dari 3 pendapat tersebut dapat disimpulkan bahwa mangle adalah komponen penting yang tidak terpisahkan dari implementasi Queue Tree. Penandaan paket (packet marking) melalui firewall mangle menjadi dasar bagi Queue Tree untuk melakukan identifikasi dan kategorisasi trafik, yang memungkinkan prioritisasi dan manajemen bandwidth yang lebih efektif. Penandaan dapat dilakukan berdasarkan jenis protokol, port, alamat sumber/tujuan, atau interface, tergantung pada kebutuhan pengelolaan jaringan.
+        </div>
+    </div>
+
+    <!-- Section: Konfigurasi Queue Tree -->
+    <div class="section fade-in">
+        <h2 class="section-title">3. KONFIGURASI QUEUE TREE</h2>
+        
+        <h3 class="subsection-title">Struktur Dasar Queue Tree</h3>
+        <p>Dari sumber help.mikrotik.com (2024), Queue Tree menciptakan antrian satu arah dalam salah satu HTB (Hierarchical Token Bucket) dan merupakan satu-satunya cara untuk menambahkan antrian pada interface terpisah. Struktur Queue Tree bersifat hierarkis dengan komponen-komponen berikut:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">• Parent:</span> Antrian induk yang dapat berupa interface atau antrian lain</div>
+            <div class="code-line"><span class="keyword">• Child:</span> Antrian anak yang terletak di bawah parent</div>
+            <div class="code-line"><span class="keyword">• Priority:</span> Nilai prioritas (1-8), dimana 1 adalah prioritas tertinggi</div>
+            <div class="code-line"><span class="keyword">• Packet-mark:</span> Penanda paket yang berasal dari konfigurasi mangle</div>
+            <div class="code-line"><span class="keyword">• Queue type:</span> Jenis antrian yang digunakan (default, pcq, etc.)</div>
+            <div class="code-line"><span class="keyword">• Limit-at:</span> Bandwidth minimum yang dijamin (CIR - Committed Information Rate)</div>
+            <div class="code-line"><span class="keyword">• Max-limit:</span> Bandwidth maksimum yang dapat digunakan (MIR - Maximum Information Rate)</div>
+        </div>
+        
+        <p>Dari sumber MikroTik Wiki (2024), parameter penting dalam pengaturan Queue Tree adalah "priority" yang memungkinkan untuk memprioritaskan satu antrian anak (child queue) di atas antrian anak lainnya. Prioritas hanya bekerja pada child queue, bukan pada parent queue. Nilai prioritas 1 adalah yang tertinggi, sedangkan 8 adalah yang terendah.</p>
+        
+        <h3 class="subsection-title">Membuat Queue Type PCQ</h3>
+        <p>Dari sumber help.mikrotik.com (2024), PCQ (Per Connection Queue) adalah jenis antrian khusus yang digunakan untuk mendistribusikan bandwidth secara otomatis di antara banyak klien atau aliran. Berikut adalah langkah-langkah konfigurasi Queue Type PCQ menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Membuat Queue Type PCQ untuk download dan upload:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "Queue" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Queue Types"</div>
+            <div class="code-line">4. Klik tombol "+" untuk menambahkan tipe antrian baru</div>
+            <div class="code-line">5. Pada jendela "New Queue Type", atur untuk download:</div>
+            <div class="code-line">   - Name: PCQ_Download</div>
+            <div class="code-line">   - Kind: pcq</div>
+            <div class="code-line">   - PCQ Rate: 512000 (512 kbps)</div>
+            <div class="code-line">   - PCQ Classifier: dst-address</div>
+            <div class="code-line">   - PCQ Limit: 50</div>
+            <div class="code-line">6. Klik "OK" untuk menyimpan</div>
+            <div class="code-line"></div>
+            <div class="code-line">7. Klik tombol "+" lagi untuk menambahkan tipe antrian kedua</div>
+            <div class="code-line">8. Pada jendela "New Queue Type", atur untuk upload:</div>
+            <div class="code-line">   - Name: PCQ_Upload</div>
+            <div class="code-line">   - Kind: pcq</div>
+            <div class="code-line">   - PCQ Rate: 256000 (256 kbps)</div>
+            <div class="code-line">   - PCQ Classifier: src-address</div>
+            <div class="code-line">   - PCQ Limit: 50</div>
+            <div class="code-line">9. Klik "OK" untuk menyimpan</div>
+        </div>
+        
+        <p>Parameter utama dalam konfigurasi PCQ:</p>
+        <ul>
+            <li><strong>pcq-rate:</strong> Batas kecepatan maksimum untuk setiap sub-stream (0 = pembagian merata)</li>
+            <li><strong>pcq-classifier:</strong> Pengenal sub-stream (dst-address untuk download, src-address untuk upload)</li>
+            <li><strong>pcq-limit:</strong> Ukuran antrian untuk setiap sub-stream (dalam KiB)</li>
+            <li><strong>pcq-total-limit:</strong> Jumlah maksimum data dalam antrian untuk semua sub-stream</li>
+        </ul>
+        
+        <h3 class="subsection-title">Implementasi Queue Tree Dasar</h3>
+        <p>Dari sumber kinetik.umm.ac.id (2018), implementasi Queue Tree memerlukan pendekatan yang terstruktur untuk mengalokasikan bandwidth secara optimal. Berikut adalah langkah-langkah untuk konfigurasi dasar Queue Tree dengan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Membuat Parent Queue untuk download dan upload:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "Queue" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Queue Tree"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan parent queue untuk download:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: DOWNLOAD</div>
+            <div class="code-line">   - Parent: pilih ether1-WAN dari dropdown (interface WAN Anda)</div>
+            <div class="code-line">   - Max Limit: 10M</div>
+            <div class="code-line">   - Comment: Parent Download</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">5. Tambahkan parent queue untuk upload:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: UPLOAD</div>
+            <div class="code-line">   - Parent: pilih ether2-LAN dari dropdown (interface LAN Anda)</div>
+            <div class="code-line">   - Max Limit: 5M</div>
+            <div class="code-line">   - Comment: Parent Upload</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Membuat Child Queue untuk trafik download berdasarkan prioritas:</span></div>
+            <div class="code-line">1. Tambahkan child queue untuk ICMP:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: ICMP_DOWN</div>
+            <div class="code-line">   - Parent: pilih DOWNLOAD dari dropdown</div>
+            <div class="code-line">   - Packet Mark: pilih ICMP_packet dari dropdown</div>
+            <div class="code-line">   - Priority: 1 (prioritas tertinggi)</div>
+            <div class="code-line">   - Queue Type: default</div>
+            <div class="code-line">   - Max Limit: 10M</div>
+            <div class="code-line">   - Limit At: 1M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Tambahkan child queue untuk HTTPS:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: HTTPS_DOWN</div>
+            <div class="code-line">   - Parent: pilih DOWNLOAD dari dropdown</div>
+            <div class="code-line">   - Packet Mark: pilih HTTPS_packet dari dropdown</div>
+            <div class="code-line">   - Priority: 2</div>
+            <div class="code-line">   - Queue Type: default</div>
+            <div class="code-line">   - Max Limit: 8M</div>
+            <div class="code-line">   - Limit At: 2M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">3. Tambahkan child queue untuk HTTP:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: HTTP_DOWN</div>
+            <div class="code-line">   - Parent: pilih DOWNLOAD dari dropdown</div>
+            <div class="code-line">   - Packet Mark: pilih HTTP_packet dari dropdown</div>
+            <div class="code-line">   - Priority: 3</div>
+            <div class="code-line">   - Queue Type: default</div>
+            <div class="code-line">   - Max Limit: 6M</div>
+            <div class="code-line">   - Limit At: 1M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan child queue untuk trafik lainnya:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: OTHER_DOWN</div>
+            <div class="code-line">   - Parent: pilih DOWNLOAD dari dropdown</div>
+            <div class="code-line">   - Packet Mark: pilih Other_packet dari dropdown</div>
+            <div class="code-line">   - Priority: 4</div>
+            <div class="code-line">   - Queue Type: default</div>
+            <div class="code-line">   - Max Limit: 4M</div>
+            <div class="code-line">   - Limit At: 512k</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <p>Dari sumber mikrotikusers.com (2024), penting untuk memperhatikan bahwa nilai limit-at total pada child queue tidak boleh melebihi max-limit dari parent queue. Selain itu, max-limit dari setiap child queue harus lebih kecil dari max-limit parent queue. Hal ini untuk memastikan trafik dapat dibagi dengan benar antara berbagai jenis layanan.</p>
+        
+        <h3 class="subsection-title">Implementasi Queue Tree dengan PCQ</h3>
+        <p>Berikut adalah langkah-langkah implementasi Queue Tree dengan PCQ menggunakan Winbox untuk manajemen bandwidth yang lebih adil di antara banyak pengguna:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menerapkan Queue PCQ untuk distribusi bandwidth yang adil:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "Queue" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Queue Tree"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan antrian untuk download dengan PCQ:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: ALL_DOWNLOAD</div>
+            <div class="code-line">   - Parent: pilih ether1-WAN dari dropdown (interface WAN Anda)</div>
+            <div class="code-line">   - Packet Mark: pilih download dari dropdown</div>
+            <div class="code-line">   - Queue Type: pilih PCQ_Download dari dropdown</div>
+            <div class="code-line">   - Comment: PCQ Download Queue</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">5. Tambahkan antrian untuk upload dengan PCQ:</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan antrian baru</div>
+            <div class="code-line">   - Name: ALL_UPLOAD</div>
+            <div class="code-line">   - Parent: pilih ether2-LAN dari dropdown (interface LAN Anda)</div>
+            <div class="code-line">   - Packet Mark: pilih upload dari dropdown</div>
+            <div class="code-line">   - Queue Type: pilih PCQ_Upload dari dropdown</div>
+            <div class="code-line">   - Comment: PCQ Upload Queue</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <div class="security-alert">
+            <p>Konfigurasi Queue Tree yang terlalu kompleks atau tidak direncanakan dengan baik dapat menyebabkan masalah performa atau bandwidth yang tidak terdistribusi dengan baik. Selalu uji dan monitor hasil konfigurasi Anda untuk memastikan bahwa semua trafik mendapatkan alokasi yang sesuai.</p>
+        </div>
+        
+        <div class="conclusion-box">
+            <strong>Kesimpulan:</strong> Dari 3 pendapat tersebut dapat disimpulkan bahwa konfigurasi Queue Tree yang efektif memerlukan pemahaman tentang struktur hierarkis dan parameter-parameter penting seperti parent, priority, limit-at, dan max-limit. PCQ menawarkan solusi yang efisien untuk mendistribusikan bandwidth secara adil di antara banyak pengguna dengan meminimalkan konfigurasi. Implementasi Queue Tree harus selalu mempertimbangkan prinsip bahwa total bandwidth yang dijamin pada child queue tidak boleh melebihi kapasitas maksimum parent queue.
+        </div>
+    </div>
+
+    <!-- Section: Pemantauan dan Troubleshooting -->
+    <div class="section fade-in">
+        <h2 class="section-title">4. PEMANTAUAN DAN TROUBLESHOOTING QUEUE TREE</h2>
+        
+        <h3 class="subsection-title">Memantau Kinerja Queue Tree</h3>
+        <p>Dari sumber MikroTik Troubleshooting Guide (2024), pemantauan kinerja Queue Tree sangat penting untuk memastikan bahwa konfigurasi berjalan sesuai dengan yang diharapkan. Ada beberapa metode yang dapat digunakan untuk memantau kinerja Queue Tree dengan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Melihat statistik Queue Tree di Winbox:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "Queue" di panel kiri</div>
+            <div class="code-line">3. Pilih tab "Queue Tree"</div>
+            <div class="code-line">4. Perhatikan kolom-kolom berikut untuk informasi statistik:</div>
+            <div class="code-line">   - Rate: Menampilkan penggunaan bandwidth saat ini</div>
+            <div class="code-line">   - Packet Rate: Menampilkan jumlah paket per detik</div>
+            <div class="code-line">   - Bytes: Total data yang telah diproses</div>
+            <div class="code-line">   - Packets: Total paket yang telah diproses</div>
+            <div class="code-line">   - Dropped: Jumlah paket yang dibuang karena melebihi batas</div>
+            <div class="code-line"></div>
+            <div class="code-line">5. Untuk melihat informasi lebih detail, klik dua kali pada antrian tertentu</div>
+            <div class="code-line">   Pada tab "Status", Anda dapat melihat statistik real-time dan histori penggunaan</div>
+            <div class="code-line"></div>
+            <div class="code-line">6. Untuk mendapatkan tampilan grafis dari penggunaan antrian:</div>
+            <div class="code-line">   - Klik kanan pada antrian yang ingin dipantau</div>
+            <div class="code-line">   - Pilih "Graphs" dari menu konteks</div>
+            <div class="code-line">   - Grafik akan menampilkan penggunaan bandwidth secara visual</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Menggunakan Tool Torch di Winbox:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "Tools" di panel kiri</div>
+            <div class="code-line">3. Pilih "Torch" dari menu dropdown</div>
+            <div class="code-line">4. Pada jendela Torch, konfigurasikan parameter berikut:</div>
+            <div class="code-line">   - Interface: Pilih interface yang ingin dipantau (mis. ether1-WAN)</div>
+            <div class="code-line">   - Src. Address: Masukkan alamat sumber (opsional, 0.0.0.0/0 untuk semua)</div>
+            <div class="code-line">   - Dst. Address: Masukkan alamat tujuan (opsional, 0.0.0.0/0 untuk semua)</div>
+            <div class="code-line">   - Protocol: Pilih any untuk memantau semua protokol</div>
+            <div class="code-line">   - Port: any-any untuk memantau semua port</div>
+            <div class="code-line">   - Duration: 10 (detik)</div>
+            <div class="code-line">5. Klik "Start" untuk memulai pemantauan</div>
+            <div class="code-line">   Torch akan menampilkan trafik real-time dalam format grafis dan tabel</div>
+        </div>
+        
+        <p>Dari sumber tech.layer-x.com (2025), pemantauan dan pemecahan masalah yang efektif memerlukan pemahaman tentang perintah diagnostik MikroTik yang kuat. Selain melihat statistik Queue Tree, kita juga dapat menggunakan fitur grafik untuk memantau penggunaan bandwidth secara visual:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Mengaktifkan pencacahan (counters) untuk Queue Tree:</span></div>
+            <div class="code-line">1. Buka aplikasi Winbox dan hubungkan ke router MikroTik</div>
+            <div class="code-line">2. Klik menu "System" di panel kiri</div>
+            <div class="code-line">3. Pilih "Logging" dari menu dropdown</div>
+            <div class="code-line">4. Pada tab "Actions", klik tombol "+" untuk menambahkan aksi baru</div>
+            <div class="code-line">5. Pilih "queue" untuk topik</div>
+            <div class="code-line">6. Pilih tingkat log "info"</div>
+            <div class="code-line">7. Pilih target "memory" atau "disk" untuk menyimpan log</div>
+            <div class="code-line">8. Klik "OK" untuk menyimpan</div>
+            <div class="code-line"></div>
+            <div class="code-line">9. Untuk melihat statistik firewall mangle:</div>
+            <div class="code-line">   - Klik menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Mangle"</div>
+            <div class="code-line">   - Perhatikan kolom "Packets" dan "Bytes" untuk masing-masing aturan</div>
+            <div class="code-line">   - Nilai ini menunjukkan jumlah paket dan data yang telah diproses oleh aturan</div>
+        </div>
+        
+        <h3 class="subsection-title">Troubleshooting Umum Queue Tree</h3>
+        <p>Dari sumber MikroTik Wiki (2024), beberapa masalah umum yang mungkin terjadi dalam konfigurasi Queue Tree dan solusinya menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">1. Masalah: Queue Tree tidak bekerja atau tidak ada trafik yang terlihat</span></div>
+            <div class="code-line">Solusi: Periksa apakah paket telah ditandai dengan benar</div>
+            <div class="code-line">- Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">- Pilih tab "Mangle"</div>
+            <div class="code-line">- Perhatikan kolom "Packets" dan "Bytes" untuk aturan mangle yang Anda buat</div>
+            <div class="code-line">- Jika nilainya 0 atau sangat kecil, kemungkinan aturan mangle tidak menangkap trafik</div>
+            <div class="code-line">- Periksa kembali kondisi aturan mangle (protokol, port, alamat IP, dll.)</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">2. Masalah: Paket ditandai tetapi Queue Tree tidak memproses</span></div>
+            <div class="code-line">Solusi: Periksa apakah packet-mark di Queue Tree cocok dengan yang dibuat di mangle</div>
+            <div class="code-line">- Buka menu "Queue" → "Queue Tree" di panel kiri</div>
+            <div class="code-line">- Klik dua kali pada antrian yang bermasalah</div>
+            <div class="code-line">- Pastikan Packet Mark yang dipilih sama persis dengan yang dibuat di mangle</div>
+            <div class="code-line">- Perhatikan bahwa nama packet mark bersifat case-sensitive</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">3. Masalah: Prioritas tidak berfungsi dengan benar</span></div>
+            <div class="code-line">Solusi:</div>
+            <div class="code-line">- Pastikan parent queue memiliki bandwidth yang cukup</div>
+            <div class="code-line">  (periksa nilai max-limit pada parent)</div>
+            <div class="code-line">- Pastikan prioritas hanya dikonfigurasi pada child queue, bukan parent</div>
+            <div class="code-line">- Verifikasi bahwa total limit-at dari semua child queue tidak melebihi</div>
+            <div class="code-line">  max-limit dari parent queue</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="keyword">4. Masalah: Fasttrack mengabaikan Queue Tree</span></div>
+            <div class="code-line">Solusi: Nonaktifkan fasttrack untuk trafik yang ingin diatur</div>
+            <div class="code-line">- Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">- Pilih tab "Filter Rules"</div>
+            <div class="code-line">- Cari aturan dengan action "fasttrack-connection"</div>
+            <div class="code-line">- Klik dua kali pada aturan tersebut dan nonaktifkan dengan mencentang "Disabled"</div>
+            <div class="code-line">- Atau tambahkan aturan baru yang mengecualikan trafik tertentu dari fasttrack</div>
+        </div>
+        
+        <p>Untuk mengatasi masalah FastTrack yang mengabaikan Queue Tree dengan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Nonaktifkan FastTrack untuk trafik tertentu:</span></div>
+            <div class="code-line">1. Tambahkan aturan mangle untuk menandai koneksi:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Mangle"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: prerouting</div>
+            <div class="code-line">   - In. Interface: ether1-WAN (interface WAN Anda)</div>
+            <div class="code-line">   - Action: mark-connection</div>
+            <div class="code-line">   - New Connection Mark: no-fasttrack</div>
+            <div class="code-line">   - Centang Passthrough</div>
+            <div class="code-line">   - Klik tombol "Apply" kemudian "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Tambahkan aturan firewall untuk mengabaikan fasttrack:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Filter Rules"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan aturan baru</div>
+            <div class="code-line">   - Chain: forward</div>
+            <div class="code-line">   - Connection Mark: no-fasttrack</div>
+            <div class="code-line">   - Action: accept</div>
+            <div class="code-line">   - Pada tab "Advanced", pilih "Fasttrack" dan pilih "No" dari dropdown</div>
+            <div class="code-line">   - Comment: Disable fasttrack for QoS</div>
+            <div class="code-line">   - Klik "Apply" kemudian "OK"</div>
+        </div>
+        
+        <div class="tech-alert">
+            <p>Queue Tree bekerja paling baik ketika semua parameter dan konfigurasi telah direncanakan dengan cermat. Gunakan alat diagnostik seperti Torch, tracer paket, dan statistik untuk memantau kinerja dan mengidentifikasi masalah. Jika perlu, reset dan bangun kembali konfigurasi Queue Tree Anda dengan pendekatan sistematis.</p>
+        </div>
+        
+        <div class="conclusion-box">
+            <strong>Kesimpulan:</strong> Dari 2 pendapat tersebut dapat disimpulkan bahwa pemantauan dan troubleshooting Queue Tree memerlukan penggunaan perintah diagnostik yang tepat, seperti melihat statistik antrian, memantau penandaan paket, dan menggunakan Torch untuk analisis real-time. Masalah umum seperti penandaan paket yang tidak benar, ketidakcocokan nama packet-mark, konfigurasi prioritas yang salah, atau interferensi dari fitur FastTrack dapat diatasi dengan memeriksa dan menyesuaikan konfigurasi terkait secara sistematis.
+        </div>
+    </div>
+
+    <!-- Section: Studi Kasus Queue Tree -->
+    <div class="section fade-in">
+        <h2 class="section-title">5. STUDI KASUS QUEUE TREE</h2>
+        
+        <h3 class="subsection-title">Prioritisasi Trafik untuk VoIP dan Gaming</h3>
+        <p>Dari sumber forum.mikrotik.com (2016), dalam lingkungan di mana VoIP dan gaming penting, prioritisasi trafik dapat diimplementasikan dengan Queue Tree untuk memastikan pengalaman pengguna yang optimal. Berikut adalah langkah-langkah konfigurasi untuk prioritisasi VoIP dan gaming menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Konfigurasi Mangle dan Queue Tree untuk VoIP dan Gaming:</span></div>
+            <div class="code-line">1. Konfigurasi mangle untuk trafik VoIP:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Mangle"</div>
+            <div class="code-line">   - Tambahkan aturan untuk menandai SIP:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Protocol: udp</div>
+            <div class="code-line">     • Dst. Port: 5060,5061</div>
+            <div class="code-line">     • Action: mark-connection</div>
+            <div class="code-line">     • New Connection Mark: VoIP_conn</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">   - Tambahkan aturan untuk menandai RTP:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Protocol: udp</div>
+            <div class="code-line">     • Dst. Port: 10000-20000</div>
+            <div class="code-line">     • Action: mark-connection</div>
+            <div class="code-line">     • New Connection Mark: VoIP_conn</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">   - Tambahkan aturan untuk menandai paket VoIP:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Connection Mark: VoIP_conn</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: VoIP_packet</div>
+            <div class="code-line">     • Jangan centang Passthrough</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Konfigurasi mangle untuk trafik gaming (contoh Xbox):</div>
+            <div class="code-line">   - Tambahkan aturan untuk menandai koneksi gaming:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Protocol: udp</div>
+            <div class="code-line">     • Dst. Port: 3074,3075</div>
+            <div class="code-line">     • Action: mark-connection</div>
+            <div class="code-line">     • New Connection Mark: Gaming_conn</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">   - Tambahkan aturan untuk menandai paket gaming:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Connection Mark: Gaming_conn</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: Gaming_packet</div>
+            <div class="code-line">     • Jangan centang Passthrough</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line">3. Konfigurasi Queue Tree untuk prioritisasi:</div>
+            <div class="code-line">   - Buka menu "Queue" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Queue Tree"</div>
+            <div class="code-line">   - Tambahkan parent queue untuk download:</div>
+            <div class="code-line">     • Name: TOTAL_DOWNLOAD</div>
+            <div class="code-line">     • Parent: ether1-WAN (interface WAN Anda)</div>
+            <div class="code-line">     • Max Limit: 20M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">   - Tambahkan parent queue untuk upload:</div>
+            <div class="code-line">     • Name: TOTAL_UPLOAD</div>
+            <div class="code-line">     • Parent: ether2-LAN (interface LAN Anda)</div>
+            <div class="code-line">     • Max Limit: 10M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">4. Tambahkan child queue untuk VoIP download:</div>
+            <div class="code-line">   - Name: VoIP_DOWN</div>
+            <div class="code-line">   - Parent: TOTAL_DOWNLOAD</div>
+            <div class="code-line">   - Packet Mark: VoIP_packet</div>
+            <div class="code-line">   - Priority: 1</div>
+            <div class="code-line">   - Max Limit: 5M</div>
+            <div class="code-line">   - Limit At: 1M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">5. Tambahkan child queue untuk Gaming download:</div>
+            <div class="code-line">   - Name: Gaming_DOWN</div>
+            <div class="code-line">   - Parent: TOTAL_DOWNLOAD</div>
+            <div class="code-line">   - Packet Mark: Gaming_packet</div>
+            <div class="code-line">   - Priority: 2</div>
+            <div class="code-line">   - Max Limit: 10M</div>
+            <div class="code-line">   - Limit At: 2M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">6. Tambahkan child queue untuk VoIP upload:</div>
+            <div class="code-line">   - Name: VoIP_UP</div>
+            <div class="code-line">   - Parent: TOTAL_UPLOAD</div>
+            <div class="code-line">   - Packet Mark: VoIP_packet</div>
+            <div class="code-line">   - Priority: 1</div>
+            <div class="code-line">   - Max Limit: 5M</div>
+            <div class="code-line">   - Limit At: 1M</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">7. Tambahkan child queue untuk Gaming upload:</div>
+            <div class="code-line">   - Name: Gaming_UP</div>
+            <div class="code-line">   - Parent: TOTAL_UPLOAD</div>
+            <div class="code-line">   - Packet Mark: Gaming_packet</div>
+            <div class="code-line">   - Priority: 2</div>
+            <div class="code-line">   - Max Limit: 8M</div>
+            <div class="code-line">   - Limit At: 1M</div>
+            <div class="code-line">   - Klik "OK"</div>
+        </div>
+        
+        <h3 class="subsection-title">Distribusi Bandwidth Adil dengan PCQ</h3>
+        <p>Dari sumber wargeeks.org (2016), distribusi bandwidth yang adil di antara banyak pengguna dapat dicapai dengan menggunakan PCQ di Queue Tree. Berikut adalah langkah-langkah implementasi untuk hotspot atau jaringan dengan banyak pengguna menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Konfigurasi PCQ untuk Hotspot dengan Winbox:</span></div>
+            <div class="code-line">1. Membuat Queue Type PCQ dengan burst:</div>
+            <div class="code-line">   - Buka menu "Queue" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Queue Types"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan tipe baru</div>
+            <div class="code-line">   - Untuk download, atur:</div>
+            <div class="code-line">     • Name: PCQ_Down</div>
+            <div class="code-line">     • Kind: pcq</div>
+            <div class="code-line">     • PCQ Rate: 2M (2 Mbps)</div>
+            <div class="code-line">     • PCQ Classifier: dst-address</div>
+            <div class="code-line">     • Pada tab "Burst", atur:</div>
+            <div class="code-line">       - Burst Rate: 4M</div>
+            <div class="code-line">       - Burst Threshold: 1M</div>
+            <div class="code-line">       - Burst Time: 10s</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">   - Untuk upload, atur:</div>
+            <div class="code-line">     • Name: PCQ_Up</div>
+            <div class="code-line">     • Kind: pcq</div>
+            <div class="code-line">     • PCQ Rate: 1M (1 Mbps)</div>
+            <div class="code-line">     • PCQ Classifier: src-address</div>
+            <div class="code-line">     • Pada tab "Burst", atur:</div>
+            <div class="code-line">       - Burst Rate: 2M</div>
+            <div class="code-line">       - Burst Threshold: 512k</div>
+            <div class="code-line">       - Burst Time: 10s</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Menandai paket hotspot:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Mangle"</div>
+            <div class="code-line">   - Untuk upload:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Src. Address: 192.168.100.0/24 (subnet hotspot Anda)</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: hotspot_upload</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">   - Untuk download:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Dst. Address: 192.168.100.0/24 (subnet hotspot Anda)</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: hotspot_download</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line">3. Mengimplementasikan Queue Tree dengan PCQ:</div>
+            <div class="code-line">   - Buka menu "Queue" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Queue Tree"</div>
+            <div class="code-line">   - Untuk download:</div>
+            <div class="code-line">     • Name: Hotspot_Download</div>
+            <div class="code-line">     • Parent: ether1-WAN (interface WAN Anda)</div>
+            <div class="code-line">     • Packet Mark: hotspot_download</div>
+            <div class="code-line">     • Queue Type: PCQ_Down</div>
+            <div class="code-line">     • Max Limit: 50M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">   - Untuk upload:</div>
+            <div class="code-line">     • Name: Hotspot_Upload</div>
+            <div class="code-line">     • Parent: ether2-LAN (interface LAN Anda)</div>
+            <div class="code-line">     • Packet Mark: hotspot_upload</div>
+            <div class="code-line">     • Queue Type: PCQ_Up</div>
+            <div class="code-line">     • Max Limit: 25M</div>
+            <div class="code-line">     • Klik "OK"</div>
+        </div>
+        
+        <h3 class="subsection-title">Prioritisasi Berdasarkan Jenis Konten</h3>
+        <p>Dari sumber aacable.wordpress.com (2020), kita dapat membuat implementasi Queue Tree yang memprioritaskan trafik streaming atau CDN agar tidak terganggu oleh aktivitas unduhan besar seperti dari Internet Download Manager (IDM). Berikut langkah-langkah implementasi menggunakan Winbox:</p>
+        
+        <div class="code-terminal">
+            <div class="code-line"><span class="keyword">Prioritisasi Trafik Berdasarkan Jenis Konten:</span></div>
+            <div class="code-line">1. Menambahkan daftar alamat untuk CDN:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Address Lists"</div>
+            <div class="code-line">   - Klik tombol "+" untuk menambahkan entri baru</div>
+            <div class="code-line">   - Address: 172.16.99.0/24</div>
+            <div class="code-line">   - List: 1mb</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line">   - Tambahkan entri lainnya:</div>
+            <div class="code-line">   - Address: 58.27.130.0/24</div>
+            <div class="code-line">   - List: cdn_list</div>
+            <div class="code-line">   - Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">2. Menandai berbagai jenis trafik:</div>
+            <div class="code-line">   - Buka menu "IP" → "Firewall" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Mangle"</div>
+            <div class="code-line">   - Untuk ICMP:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Protocol: icmp</div>
+            <div class="code-line">     • Action: mark-connection</div>
+            <div class="code-line">     • New Connection Mark: ICMP_Conn</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">     • Tambahkan aturan kedua:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Connection Mark: ICMP_Conn</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: ICMP_Pkts</div>
+            <div class="code-line">     • Jangan centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">   - Untuk CDN:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Dst. Address List: cdn_list</div>
+            <div class="code-line">     • Action: mark-connection</div>
+            <div class="code-line">     • New Connection Mark: CDN_Conn</div>
+            <div class="code-line">     • Centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line">     • Tambahkan aturan kedua:</div>
+            <div class="code-line">     • Chain: forward</div>
+            <div class="code-line">     • Connection Mark: CDN_Conn</div>
+            <div class="code-line">     • Action: mark-packet</div>
+            <div class="code-line">     • New Packet Mark: CDN_Pkts</div>
+            <div class="code-line">     • Jangan centang Passthrough</div>
+            <div class="code-line">     • Klik "OK"</div>
+        </div>
+        
+        <div class="code-terminal">
+            <div class="code-line">3. Implementasi Queue Tree dengan prioritas:</div>
+            <div class="code-line">   - Buka menu "Queue" di panel kiri</div>
+            <div class="code-line">   - Pilih tab "Queue Tree"</div>
+            <div class="code-line">   - Tambahkan parent queue:</div>
+            <div class="code-line">     • Name: User_1MB</div>
+            <div class="code-line">     • Parent: ether1-WAN (interface WAN Anda)</div>
+            <div class="code-line">     • Max Limit: 1M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">   - Tambahkan child queue untuk ICMP:</div>
+            <div class="code-line">     • Name: ICMP_Priority</div>
+            <div class="code-line">     • Parent: User_1MB</div>
+            <div class="code-line">     • Packet Mark: ICMP_Pkts</div>
+            <div class="code-line">     • Priority: 1</div>
+            <div class="code-line">     • Limit At: 128k</div>
+            <div class="code-line">     • Max Limit: 1M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">   - Tambahkan child queue untuk CDN:</div>
+            <div class="code-line">     • Name: CDN_Priority</div>
+            <div class="code-line">     • Parent: User_1MB</div>
+            <div class="code-line">     • Packet Mark: CDN_Pkts</div>
+            <div class="code-line">     • Priority: 2</div>
+            <div class="code-line">     • Limit At: 512k</div>
+            <div class="code-line">     • Max Limit: 1M</div>
+            <div class="code-line">     • Klik "OK"</div>
+            <div class="code-line"></div>
+            <div class="code-line">   - Tambahkan child queue untuk trafik lainnya:</div>
+            <div class="code-line">     • Name: Other_Traffic</div>
+            <div class="code-line">     • Parent: User_1MB</div>
+            <div class="code-line">     • Packet Mark: !CDN_Pkts,!ICMP_Pkts (semua kecuali kedua mark tersebut)</div>
+            <div class="code-line">     • Priority: 8</div>
+            <div class="code-line">     • Limit At: 64k</div>
+            <div class="code-line">     • Max Limit: 384k</div>
+            <div class="code-line">     • Klik "OK"</div>
+        </div>
+        
+        <div class="conclusion-box">
+            <strong>Kesimpulan:</strong> Dari 3 pendapat tersebut dapat disimpulkan bahwa Queue Tree dapat diimplementasikan untuk berbagai kasus penggunaan seperti prioritisasi trafik VoIP dan gaming, distribusi bandwidth yang adil menggunakan PCQ, dan prioritisasi berdasarkan jenis konten. Kunci keberhasilan implementasi ini terletak pada penandaan paket yang tepat menggunakan firewall mangle dan pengaturan prioritas serta batasan bandwidth yang sesuai dengan kebutuhan jaringan. Dengan kombinasi yang tepat, Queue Tree dapat secara efektif mengoptimalkan pengalaman pengguna bahkan pada koneksi dengan bandwidth terbatas.
+        </div>
+    </div>
+
+    <!-- Bibliography -->
+    <div class="bibliography">
+        <h3>DAFTAR PUSTAKA</h3>
+        <ul>
+            <li><strong>MikroTik Documentation.</strong> 2023. <em>Queues - RouterOS</em>. <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/328088/Queues" target="_blank">https://help.mikrotik.com/docs/spaces/ROS/pages/328088/Queues</a>. Diakses pada 16 September 2025, pukul 07:15 WIB.</li>
+            
+            <li><strong>MikroTik Wiki.</strong> 2024. <em>Manual:Queue</em>. <a href="https://wiki.mikrotik.com/Manual:Queue" target="_blank">https://wiki.mikrotik.com/Manual:Queue</a>. Diakses pada 16 September 2025, pukul 07:45 WIB.</li>
+            
+            <li><strong>MikroTik Users.</strong> 2024. <em>Queueing and QoS on MikroTik RouterOS v7</em>. <a href="https://mikrotikusers.com/queueing-and-qos-on-mikrotik-routeros-v7/" target="_blank">https://mikrotikusers.com/queueing-and-qos-on-mikrotik-routeros-v7/</a>. Diakses pada 16 September 2025, pukul 08:20 WIB.</li>
+            
+            <li><strong>MiRO.</strong> 2020. <em>MikroTik 101: QoS – How to prioritise your network traffic!</em>. <a href="https://miro.co.za/blog/latest-news/mikrotik-101-qos-how-to-prioritise-your-network-traffic" target="_blank">https://miro.co.za/blog/latest-news/mikrotik-101-qos-how-to-prioritise-your-network-traffic</a>. Diakses pada 16 September 2025, pukul 08:55 WIB.</li>
+
+            <li><strong>Liantoni, F., & Perwira, R.</strong> 2018. <em>Queue Tree Implementation for Bandwidth Management in Modern Campus Network Architecture</em>. <a href="https://kinetik.umm.ac.id/index.php/kinetik/article/download/227/pdf/1514" target="_blank">https://kinetik.umm.ac.id/index.php/kinetik/article/download/227/pdf/1514</a>. Diakses pada 16 September 2025, pukul 09:30 WIB.</li>
+
+            <li><strong>ISPbills.</strong> 2020. <em>Traffic base priority via Queue Tree in Mikrotik</em>. <a href="https://help.ispbills.com/hc/en-us/articles/360018285880-Traffic-base-priority-via-Queue-Tree-in-Mikrotik" target="_blank">https://help.ispbills.com/hc/en-us/articles/360018285880-Traffic-base-priority-via-Queue-Tree-in-Mikrotik</a>. Diakses pada 16 September 2025, pukul 10:05 WIB.</li>
+
+            <li><strong>Aacable (Syed Jahanzaib).</strong> 2020. <em>Mikrotik Queue Tree with Traffic Priority</em>. <a href="https://aacable.wordpress.com/2020/06/19/mikrotik-queue-tree-with-traffic-priority/" target="_blank">https://aacable.wordpress.com/2020/06/19/mikrotik-queue-tree-with-traffic-priority/</a>. Diakses pada 16 September 2025, pukul 10:40 WIB.</li>
+
+            <li><strong>MikroTik Forum.</strong> 2016. <em>Basic Queue Tree Help</em>. <a href="https://forum.mikrotik.com/t/basic-queue-tree-help/94574" target="_blank">https://forum.mikrotik.com/t/basic-queue-tree-help/94574</a>. Diakses pada 16 September 2025, pukul 11:15 WIB.</li>
+
+            <li><strong>The War Geeks Clan.</strong> 2016. <em>Bandwidth Management using a Queue Tree and PCQ</em>. <a href="https://wargeeks.org/t/bandwidth-management-using-a-queue-tree-and-pcq/642" target="_blank">https://wargeeks.org/t/bandwidth-management-using-a-queue-tree-and-pcq/642</a>. Diakses pada 16 September 2025, pukul 11:50 WIB.</li>
+
+            <li><strong>MikroTik Documentation.</strong> 2024. <em>PCQ example</em>. <a href="https://help.mikrotik.com/docs/spaces/ROS/pages/137986099/PCQ+example" target="_blank">https://help.mikrotik.com/docs/spaces/ROS/pages/137986099/PCQ+example</a>. Diakses pada 16 September 2025, pukul 12:25 WIB.</li>
+            
+            <li><strong>Tech@Layer-x.</strong> 2025. <em>Essential MikroTik Commands Every Network Engineer Should Know</em>. <a href="https://tech.layer-x.com/essential-mikrotik-commands-every-network-engineer-should-know/" target="_blank">https://tech.layer-x.com/essential-mikrotik-commands-every-network-engineer-should-know/</a>. Diakses pada 16 September 2025, pukul 13:00 WIB.</li>
+        </ul>
+    </div>
+</div>
+<script>
+    // Tech particles animation
+    function createTechParticles() {
+        const particlesContainer = document.getElementById('techParticles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+    // Scroll progress
+    function updateScrollProgress() {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+    }
+
+    // Typing effect for code lines
+    function typeText(element, text, speed = 30) {
+        return new Promise(resolve => {
+            element.classList.add('typing');
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent = text.slice(0, i + 1);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typing');
+                    element.classList.add('typed');
+                    resolve();
+                }
+            }
+            type();
+        });
+    }
+    
+    async function animateCodeBlock(terminal) {
+        const codeLines = terminal.querySelectorAll('.code-line:not(.typed)');
+        for (const line of codeLines) {
+            const originalHTML = line.innerHTML;
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = originalHTML;
+            const textContent = tempDiv.textContent || tempDiv.innerText || '';
+            
+            // Clear the line content, but keep child spans for styling
+            const children = Array.from(line.childNodes).map(child => child.cloneNode(true));
+            line.innerHTML = '';
+            
+            await typeText(line, textContent, 20);
+            
+            // Restore original HTML with spans
+            line.innerHTML = originalHTML;
+            line.classList.add('typed');
+        }
+    }
+
+    // Animate code blocks with typing effect
+    function setupCodeBlockObserver() {
+        const codeTerminals = document.querySelectorAll('.code-terminal');
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const terminal = entry.target;
+                    // For already typed lines, just show them
+                    terminal.querySelectorAll('.code-line.typed').forEach(line => line.style.opacity = '1');
+                    
+                    animateCodeBlock(terminal);
+                    obs.unobserve(terminal); // Animate only once
+                }
+            });
+        }, { threshold: 0.3 });
+
+        codeTerminals.forEach(terminal => {
+            observer.observe(terminal);
+        });
+    }
+
+    // Fade in animation on scroll
+    function animateOnScroll() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+
+    // Section hover effects
+    function addSectionEffects() {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                section.style.transform = 'translateY(-8px)';
+            });
+            section.addEventListener('mouseleave', () => {
+                section.style.transform = 'translateY(0)';
+            });
+        });
+    }
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+        createTechParticles();
+        animateOnScroll();
+        setupCodeBlockObserver();
+        addSectionEffects();
+        
+        // Scroll events
+        window.addEventListener('scroll', updateScrollProgress);
+        
+        // Smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    });
+
+    // Add responsive particle count
+    function adjustParticleCount() {
+        const width = window.innerWidth;
+        const particlesContainer = document.getElementById('techParticles');
+        const currentParticles = particlesContainer.children.length;
+        const targetParticles = width < 768 ? 20 : width < 1200 ? 35 : 50;
+        
+        if (currentParticles !== targetParticles) {
+            particlesContainer.innerHTML = '';
+            for (let i = 0; i < targetParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+    }
+
+    window.addEventListener('resize', adjustParticleCount);
+
+
+
+   
+</script>
+
+</html>
