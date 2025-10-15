@@ -790,6 +790,12 @@ user-drag: none;
     <!-- Section: Konsep Dasar Queue Tree -->
     <div class="section fade-in">
         <h2 class="section-title">1. KONSEP DASAR QUEUE TREE</h2>
+
+                                                            <div class="image-container">
+          <img src="https://github.com/vian0001/jovian-product37/blob/main/Untitled%20Diagram.drawio.png?raw=true" alt="SERVICE IP pada MikroTik RouterOS">
+          <div class="image-caption">Tampilan topologi di gns3</div>
+                                                </div>
+
         
         <h3 class="subsection-title">Pengertian Queue Tree</h3>
         <p>Dari sumber MikroTik Documentation (2023), Queue Tree adalah metode manajemen bandwidth lanjutan di RouterOS yang memungkinkan pengguna membuat struktur queue bertingkat (hierarkis) untuk mengelola trafik jaringan. Queue Tree berfungsi sebagai sarana untuk membatasi, memprioritaskan, dan mengoptimalkan trafik berdasarkan penanda paket (packet marks) yang sebelumnya telah ditandai melalui fasilitas firewall mangle.</p>
@@ -837,6 +843,31 @@ user-drag: none;
     <!-- Section: Implementasi Mangle untuk Queue Tree -->
     <div class="section fade-in">
         <h2 class="section-title">2. IMPLEMENTASI MANGLE UNTUK QUEUE TREE</h2>
+
+                                                            <div class="image-container">
+          <img src="https://github.com/vian0001/jovian-product37/blob/main/Untitled%20Diagram.drawio.png?raw=true" alt="SERVICE IP pada MikroTik RouterOS">
+          <div class="image-caption">Tampilan topologi di gns3</div>
+                                                </div>
+
+
+                                                             <h3 class="subsection-title">sebelum </h3>
+               <div class="image-container">
+            <img src="no (2).png" alt="Konsep Simple Queue pada MikroTik">
+            <div class="image-caption">sesudah.</div>
+        </div>
+
+                 <h3 class="subsection-title">sebelum </h3>
+                <div class="image-container">
+            <img src="no (3).png" alt="Konsep Simple Queue pada MikroTik">
+            <div class="image-caption">Ilustrasi konsep Simple Queue dalam manajemen bandwidth MikroTik.</div>
+        </div>
+
+                             <h3 class="subsection-title">sebelum </h3>
+               <div class="image-container">
+            <img src="no (4).png" alt="Konsep Simple Queue pada MikroTik">
+            <div class="image-caption">sesudah.</div>
+        </div>
+
         
         <h3 class="subsection-title">Peran Mangle dalam Queue Tree</h3>
         <p>Dari sumber help.mikrotik.com (2024), Mangle merupakan fasilitas yang memungkinkan penandaan paket IP dengan tanda khusus (mark) yang kemudian digunakan oleh Queue Tree untuk mengidentifikasi jenis trafik. Sebelum dapat menggunakan Queue Tree, perlu dilakukan konfigurasi firewall mangle untuk menandai paket-paket yang akan dikelola.</p>
